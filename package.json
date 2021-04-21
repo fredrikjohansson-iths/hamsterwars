@@ -1,0 +1,19 @@
+{
+  "name": "hamsterwars",
+  "version": "1.0.0",
+  "description": "Hamsterwars Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredrikjohansson-iths/hamsterwars.git"
+  },
+  "author": "Stig F. Johansson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fredrikjohansson-iths/hamsterwars/issues"
+  },
+  "homepage": "https://github.com/fredrikjohansson-iths/hamsterwars#readme"
+}
