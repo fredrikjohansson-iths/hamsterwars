@@ -1,7 +1,7 @@
 {
   "name": "hamsterwars",
   "version": "1.0.0",
-  "description": "Hamsterwars Backend",
+  "description": "Hamster Wars Backend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/fredrikjohansson-iths/hamsterwars/issues"
   },
-  "homepage": "https://github.com/fredrikjohansson-iths/hamsterwars#readme"
+  "homepage": "https://github.com/fredrikjohansson-iths/hamsterwars#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-csp-header": "^4.1.0",
+    "firebase": "^8.5.0",
+    "firebase-admin": "^9.8.0"
+  }
 }
