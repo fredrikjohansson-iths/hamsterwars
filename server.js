@@ -6,9 +6,6 @@ const localData = require("./data.json");
 const hamsters = require('./routes/hamsters.js')
 const staticFolder = path.join(__dirname, 'frontend')
 
-
-const { expressCspHeader, INLINE, NONE, SELF, EVAL } = require('express-csp-header');
-
 const app = express();
 const db = getDb()
 
