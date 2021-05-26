@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* component styling */
+.Header {background-color: chartreuse; height: 6em; width: 100%;}
+.Header h1 {margin: 0;}
