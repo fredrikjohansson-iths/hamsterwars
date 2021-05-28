@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
-const NameSign = ({ name }) => {
-  return <h1>{name}</h1>;
+import './Versus.css'
+const NameSign = ({className, name }) => {
+  return <h1 className={className}>{name}</h1>;
  };
 
 class Versus extends Component {
     render() {
-        return <div className="Versus"><NameSign id="Left" name="Test" /></div>
+        return <div className="Versus"><NameSign className="Left" name="Test" /><NameSign className="Right" name="Test 2" /></div>
     }
   }
 ;

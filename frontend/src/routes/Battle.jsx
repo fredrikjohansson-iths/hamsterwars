@@ -1,5 +1,8 @@
+import React from 'react'
+import Versus from '../components/battle/Versus'
+
 function Battle() {
-    return <h2>Battle</h2>;
+    return <div><Versus/></div>;
 }
 
 export default Battle
