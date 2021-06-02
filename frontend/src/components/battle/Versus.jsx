@@ -8,7 +8,7 @@ const NameSign = ({ className, name }) => {
 class Versus extends Component {
   render() {
     return (
-      <div className="Versus"><h1></h1>
+      <div className="Versus">
         <NameSign className="Left" name={this.props.nameLeft} />
         <NameSign className="Right" name={this.props.nameLeft} />
       </div>

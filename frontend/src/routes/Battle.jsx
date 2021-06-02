@@ -6,40 +6,72 @@ const axios = require("axios");
 class Battle extends Component {
   constructor(props) {
     super(props);
-    this.state = {blueId: Number, blueContestant: Object, redId: Number, redContestant: Object };
+    this.state = {
+      blueId: Number,
+      blueContestant: Object,
+      redId: Number,
+      redContestant: Object,
+    };
   }
+
   componentDidMount() {
+    var floor = 0;
+    axios
+      .get("http://localhost:8000/hamsters/")
+      .then((response) => {
+        // handle success
 
-      const[blueData, redData] = await Promise.all([
-          axios.get("http://localhost:8000/hamsters/random"),
-          axios.get("http://localhost:8000/hamsters/random")
-      ])
+        floor = response.data.length;
 
-      while (blueData.data.id === redData.data.id){
-            blueData = axios.get("http://localhost:8000/hamsters/random")
+        var blueRng = Math.floor(Math.random() * floor);
 
-      }
-    // axios
-    //   .get("http://localhost:8000/hamsters/random")
-    //   .then((response) => {
-    //     // handle success
-    //     this.setState({blueId: response.data.id, blueContestant: response.data });
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-    //   .then(function(){
-        
-    //   })
+        var redRng = Math.floor(Math.random() * floor);
 
+        if (redRng === blueRng || blueRng === redRng) {
+          redRng = 0;
+          redRng = Math.floor(Math.random() * floor);
+
+          this.setState({ blueId: blueRng, redId: redRng });
+        } else {
+          this.setState({ blueId: blueRng, redId: redRng });
+        }
+
+        var testURI = "http://localhost:8000/hamsters/"+`${this.state.blueId}`
+        console.log(testURI)
+        axios
+        .get(testURI)
+        .then((response) => {
+          console.log(response.data)
+          // this.setState({
+          //   blueContestant: response.data,
+          // });
+        })
+        .catch((error) => console.log(error));
+
+        // console.log("Blue", this.state.blueId, "Red", this.state.blueId);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+
+
+  //   axios
+  //     .get(`http://localhost:8000/hamsters/${this.state.redId}`)
+  //     .then((response) => {
+  //       this.setState({
+  //         blueContestant: response.data,
+  //       });
+  //     })
+  //     .catch((error) => console.log(error));
   }
+  // componentDidUpdate(){console.log(this.state)}
   render() {
     return (
       <div>
         <Versus
-          nameLeft={this.state.hamsterLeft.name}
-          nameRight={this.state.hamsterRight.name}
+        // nameLeft={this.state.hamsterLeft.name}
+        // nameRight={this.state.hamsterRight.name}
         ></Versus>
         <Competitor />
       </div>

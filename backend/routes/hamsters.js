@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
 
 router.get("/random", async (req, res) => {
 	try {
+
 		const snapshot = await db.collection("hamsters").get();
 
 		let docData = [];
@@ -41,14 +42,23 @@ router.get("/random", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
 	try {
-		const id = req.params.id;
-		const docRef = await db.collection("hamsters").doc(id).get();
 
-		if (!docRef.exists) {
+		
+		const id = parseInt(req.params.id);
+
+		const colRef = db.collection("hamsters")
+
+		const snapshot = await colRef.where("id", "==", id).get();
+
+
+		if (snapshot.empty) {
 			res.status(404);
-		}
 
-		res.status(200).send(docRef.data());
+		}
+		snapshot.forEach((doc) => {
+			res.status(200).send(doc.data())
+		});
+
 	} catch (err) {
 		res.status(500).send(err.message);
 	}
