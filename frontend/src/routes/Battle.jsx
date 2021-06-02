@@ -16,62 +16,32 @@ class Battle extends Component {
 
   componentDidMount() {
     var floor = 0;
-    axios
-      .get("http://localhost:8000/hamsters/")
-      .then((response) => {
-        // handle success
+    axios.get("http://localhost:8000/hamsters/").then((response) => {
+      // handle success
 
-        floor = response.data.length;
+      floor = response.data.length;
 
-        var blueRng = Math.floor(Math.random() * floor);
+      var blueRng = Math.floor(Math.random() * floor);
 
-        var redRng = Math.floor(Math.random() * floor);
+      var redRng = Math.floor(Math.random() * floor);
 
-        if (redRng === blueRng || blueRng === redRng) {
-          redRng = 0;
-          redRng = Math.floor(Math.random() * floor);
+      if (redRng === blueRng || blueRng === redRng) {
+        redRng = 0;
+        redRng = Math.floor(Math.random() * floor);
 
-          this.setState({ blueId: blueRng, redId: redRng });
-        } else {
-          this.setState({ blueId: blueRng, redId: redRng });
-        }
-
-        var testURI = "http://localhost:8000/hamsters/"+`${this.state.blueId}`
-        console.log(testURI)
-        axios
-        .get(testURI)
-        .then((response) => {
-          console.log(response.data)
-          // this.setState({
-          //   blueContestant: response.data,
-          // });
-        })
-        .catch((error) => console.log(error));
-
-        // console.log("Blue", this.state.blueId, "Red", this.state.blueId);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-
-
-  //   axios
-  //     .get(`http://localhost:8000/hamsters/${this.state.redId}`)
-  //     .then((response) => {
-  //       this.setState({
-  //         blueContestant: response.data,
-  //       });
-  //     })
-  //     .catch((error) => console.log(error));
+        this.setState({ blueId: blueRng, redId: redRng });
+      } else {
+        this.setState({ blueId: blueRng, redId: redRng });
+      }
+    });
   }
-  // componentDidUpdate(){console.log(this.state)}
+
   render() {
     return (
       <div>
         <Versus
-        // nameLeft={this.state.hamsterLeft.name}
-        // nameRight={this.state.hamsterRight.name}
+        // nameLeft={this.state.blueCompetitor.name}
+        // nameRight={this.state.redCompetitor.name}
         ></Versus>
         <Competitor />
       </div>
