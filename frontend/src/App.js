@@ -4,8 +4,6 @@ import Header from './components/global/Header'
 import Home from './routes/Home'
 import Battle from './routes/Battle'
 import Gallery from './routes/Gallery'
-import History from './routes/History'
-import Statistics from './routes/Statistics'
 import "./styles/App.css";
 
 export default function App() {
@@ -13,22 +11,12 @@ export default function App() {
     <Router>
       <Header/>
       <div>
-        
-
-        {/* A <Switch> looks through its children <Route>s and
-          renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/battle">
             <Battle />
           </Route>
           <Route path="/gallery">
             <Gallery />
-          </Route>
-          <Route path="/history">
-            <History />
-          </Route>
-          <Route path="/statistics">
-            <Statistics />
           </Route>
           <Route path="/">
             <Home />
