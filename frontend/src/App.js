@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from './components/global/Header'
 import Home from './routes/Home'
@@ -10,7 +11,6 @@ export default function App() {
   return (
     <Router>
       <Header/>
-      <div>
         <Switch>
           <Route path="/battle">
             <Battle />
@@ -22,7 +22,6 @@ export default function App() {
             <Home />
           </Route>
         </Switch>
-      </div>
     </Router>
   );
   

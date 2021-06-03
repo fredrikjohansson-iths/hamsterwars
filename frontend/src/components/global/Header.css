@@ -1,12 +1,12 @@
 .Header {
   background-color: #303030;
-  margin-bottom: 1em;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas:
     "col1 col2 col3";
+    height: 8em;
 }
 .col1 { grid-area: col1; }
 .col2 { grid-area: col2; }

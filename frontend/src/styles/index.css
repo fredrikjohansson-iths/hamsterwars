@@ -1,17 +1,55 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 /* component styling */
-.Header {background-color: chartreuse; height: 6em; width: 100%;}
-.Header h1 {margin: 0;}
+.grid-container-battle {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 2fr 1fr;
+  grid-template-areas:
+    "banner banner"
+    "blue-profile red-profile"
+    "blue-vote red-vote";
+  align-items: center;
+  justify-items: center;
+}
+.banner {
+  grid-column: 1 / 2; /* span from grid column line 1 to 3 (i.e., span 2 columns) */
+  grid-area: banner;
+}
+.blue-profile {
+  grid-area: blue-profile;
+  overflow: hidden;
+  height: 33em;
+  width: 34em;
+  display: flex;
+}
+.red-profile {
+  grid-area: red-profile;
+  overflow: hidden;
+  height: 33em;
+  width: 34em;
+  display: flex;
+}
+
+.avatar {
+  width: minmax(3em);
+}
+.blue-vote {
+  grid-area: blue-vote;
+}
+.red-vote {
+  grid-area: red-vote;
+}

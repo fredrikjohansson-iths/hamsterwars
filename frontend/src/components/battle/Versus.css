@@ -1,22 +1,33 @@
-.Versus {
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "blue-name red-name";
+    justify-items: center;
+}
+.blue-name { grid-area: blue-name; }
+.red-name { grid-area: red-name; }
+
+.versus {
     background-image: url("../../images/versus.svg");
     height: 159px;
     width: 1121px;
     background-repeat: no-repeat;
-    position: fixed;
   }
   
-  .Left {
+  .left {
     color: white;
     left: 3em;
     font-size: 4em;
-    position: fixed;
+    grid-area: blue-name;
   }
   
-  .Right {
+  .right {
     color: white;
     left: 12em;
     font-size: 4em;
-    position: fixed;
+    grid-area: red-name;
   }
   
