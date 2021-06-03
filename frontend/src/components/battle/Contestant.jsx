@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import "./Contestant.css";
 
 class Contestant extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
+    console.log(this.props.hamsterData)
+
+
+
     const isReady = this.props.isReady;
     
-
     return (
       <div className={`grid-container-profile ${this.props.grid}`}>
         <div>
@@ -23,6 +22,7 @@ class Contestant extends Component {
         </div>
         <div className={`${this.props.grid}-bio`}>
           <ul>
+            <li>My favorite food is {this.props.hamsterData.favFood}</li>
           </ul>
         </div>
       </div>

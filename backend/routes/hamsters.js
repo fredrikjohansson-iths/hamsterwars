@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 		let docData = [];
 
 		snapshot.forEach((doc) => {
-			docData.push(doc.data());
+			docData.push({ docId: doc.id, ...doc.data() });
 		});
 
 		res.status(200).send(docData);
@@ -43,21 +43,19 @@ router.get("/random", async (req, res) => {
 router.get("/:id", async (req, res) => {
 	try {
 
-		
-		const id = parseInt(req.params.id);
 
-		const colRef = db.collection("hamsters")
+		const id = req.params.id;
 
-		const snapshot = await colRef.where("id", "==", id).get();
+		const docRef = await db.collection("hamsters").doc(id).get();
 
 
-		if (snapshot.empty) {
-			res.status(404);
-
+		if (!docRef.exists) {
+			return res.status(404);
 		}
-		snapshot.forEach((doc) => {
-			res.status(200).send(doc.data())
-		});
+
+
+		res.status(200).send({ docId: docRef.id, ...docRef.data() })
+
 
 	} catch (err) {
 		res.status(500).send(err.message);
@@ -87,18 +85,16 @@ router.post(
 
 router.put(
 	"/:id",
-	body("name").isString(),
-	body("age").isInt(),
-	body("favFood").isString(),
-	body("loves").isString(),
-	body("imgName").isString(),
 	async (req, res) => {
 		try {
 			const errors = validationResult(req);
+
 			if (!errors.isEmpty()) {
 				return res.status(400).json({ errors: errors.array() });
 			}
+
 			const id = req.params.id;
+
 			const docRef = await db.collection("hamsters").doc(id).get();
 
 			if (!docRef.exists) {
