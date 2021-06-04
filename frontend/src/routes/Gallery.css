@@ -1,0 +1,8 @@
+.react-photo-gallery--gallery img {
+	object-fit: cover;
+}
+
+.menu-bkg {background-color: #000000ba;
+    position: absolute;
+    height: 100%;
+    width: 100%;}
