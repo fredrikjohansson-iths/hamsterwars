@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Versus from "../components/battle/Versus";
 import Contestant from "../components/battle/Contestant";
+import Vote from "../components/battle/Vote"
 
 const axios = require("axios");
 
@@ -92,7 +93,8 @@ class Battle extends Component {
           imgSrc={`${red.imgName}`}
           isReady={`${isReady}`}
         />
-        <button onClick={this.blueVote}></button>
+        <Vote hamster="blue"/>
+        <Vote hamster="red"/>
       </div>
     );
   }

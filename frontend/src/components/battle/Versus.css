@@ -1,33 +1,36 @@
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "blue-name red-name";
-    justify-items: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 0px 0px;
+	grid-template-areas: "blue-name red-name";
+	justify-items: center;
 }
-.blue-name { grid-area: blue-name; }
-.red-name { grid-area: red-name; }
+.blue-name {
+	grid-area: blue-name;
+}
+.red-name {
+	grid-area: red-name;
+}
 
 .versus {
-    background-image: url("../../images/versus.svg");
-    height: 159px;
-    width: 1121px;
-    background-repeat: no-repeat;
-  }
-  
-  .left {
-    color: white;
-    left: 3em;
-    font-size: 4em;
-    grid-area: blue-name;
-  }
-  
-  .right {
-    color: white;
-    left: 12em;
-    font-size: 4em;
-    grid-area: red-name;
-  }
-  
+	background-image: url("../../images/versus.svg");
+	height: 159px;
+	width: 1121px;
+	background-repeat: no-repeat;
+	filter: drop-shadow(0 0.3em 0.15rem rgba(0, 0, 0, 0.7));
+}
+
+.left {
+	color: white;
+	left: 3em;
+	font-size: 4em;
+	grid-area: blue-name;
+}
+
+.right {
+	color: white;
+	left: 12em;
+	font-size: 4em;
+	grid-area: red-name;
+}

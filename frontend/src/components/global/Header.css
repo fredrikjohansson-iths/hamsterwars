@@ -1,22 +1,73 @@
 .Header {
-  background-color: #303030;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "col1 col2 col3";
-    height: 8em;
+	background-color: #303030;
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 0px 0px;
+	grid-template-areas: "col1 col2 col3";
+	height: 8em;
+	margin-bottom: 1em;
 }
-.col1 { grid-area: col1; }
-.col2 { grid-area: col2; }
-.col3 { grid-area: col3; }
+a .Logo {
+	width: min-content;
+	height: min-content;
+}
+
+nav a {
+	text-decoration: none;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: -0.5em;
+  filter: brightness(0.7);
+  transition-timing-function: ease-out;
+	transition: 0.25s;
+}
+
+nav p {
+	margin: 0px;
+}
+
+nav img {
+	height: 4em;
+	width: 2.5em;
+}
+
+nav a:hover{
+	transition-timing-function: ease-in-out;
+	transition: 0.45s;
+	scale: 1.5;
+  filter: brightness(1);
+  color: rgba(rgba(255, 0, 0, 0));
+  transform: translateY(1em);
+}
+
+nav a:hover p{
+	transition-timing-function: ease-in-out;
+	transition: 0.1s;
+  opacity: 0;
+}
+
+
+
+.col1 {
+	grid-area: col1;
+}
+.col2 {
+	grid-area: col2;
+}
+.col3 {
+	grid-area: col3;
+}
 
 .Logo {
-  padding-left: 0.5em;
-  padding-top: 0.5em;
+	padding-left: 0.5em;
+	padding-top: 0.5em;
 }
 
-ul {display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;}
+.nav-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	list-style: none;
+}

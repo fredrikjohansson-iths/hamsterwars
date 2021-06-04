@@ -31,25 +31,18 @@ code {
 }
 .blue-profile {
   grid-area: blue-profile;
-  overflow: hidden;
+  overflow: visible;
   height: 33em;
   width: 34em;
-  display: flex;
 }
 .red-profile {
   grid-area: red-profile;
-  overflow: hidden;
+  overflow: visible;
   height: 33em;
   width: 34em;
-  display: flex;
 }
 
 .avatar {
   width: minmax(3em);
 }
-.blue-vote {
-  grid-area: blue-vote;
-}
-.red-vote {
-  grid-area: red-vote;
-}
+
