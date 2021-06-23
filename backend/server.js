@@ -1,25 +1,33 @@
 const express = require("express");
-const path = require('path')
+const path = require("path");
 const cors = require("cors");
-const getDb = require("./fbauth.js")
+const getDb = require("./fbauth.js");
 
+const hamsters = require("./routes/hamsters.js");
 
-const hamsters = require('./routes/hamsters.js')
-
-
-const staticFolder = path.join(__dirname, 'frontend')
+const buildDir = path.join(__dirname, "../build");
+const imgDir = path.join(__dirname, "./img");
 
 const app = express();
-const db = getDb()
+const db = getDb();
 
-const port = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 
-app.use(express.json())
-app.use(cors())
-app.use(express.static(staticFolder))
+app.use((req, res, next) => {
+	console.log(`${req.method} ${req.url}`, req.params);
+	next();
+});
 
-app.use('/hamsters', hamsters)
+app.use(express.json());
+app.use(cors());
+app.use(express.static(buildDir));
+app.use("./img", express.static(imgDir));
+app.use("/hamsters", hamsters);
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
+app.listen(PORT, () => {
+	console.log(`App listening at http://localhost:${PORT}`);
 });

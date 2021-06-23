@@ -1,0 +1,26 @@
+.react-photo-gallery--gallery img {
+	object-fit: cover;
+}
+
+.menu-bkg {
+	background-color: rgba(0, 0, 0, 0.7294117647058823);
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0em;
+	display: flex;
+	justify-content: center;
+	padding-top: 5em;
+}
+
+.menu-text {
+	color: White;
+}
+
+.thumbnail {
+    transition: ease-in 0.25s;
+}
+.thumbnail:hover {
+    transition: ease-out 0.35s;
+	scale: 1.1;
+}

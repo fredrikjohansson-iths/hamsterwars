@@ -1,0 +1,44 @@
+.blue-vote {
+	grid-area: blue-vote;
+	background-color: #69c9ff;
+	border-style: solid;
+	color: white;
+	border-color: #56a8d7;
+	border-radius: 10.5em;
+	height: 8em;
+	width: 8em;
+	border-width: 0.55em;
+	margin-top: -5em;
+margin-left: 35em;
+}
+
+.blue-vote:hover {
+	background-color: #60b5e6;
+	border-color: #62bdf1;
+}
+
+.blue-vote p {
+	font-size: 2em;
+	text-align: center;
+	margin: 0;
+}
+
+.red-vote {
+	grid-area: red-vote;
+	background-color: #ff6565;
+	border-style: outset;
+	color: white;
+	border-color: #ca4e4e;
+	border-radius: 10.5em;
+	height: 8em;
+	width: 8em;
+	border-width: 0.55em;
+	margin-top: -5em;
+margin-left: -35em;
+}
+
+.red-vote p {
+	font-size: 2em;
+	text-align: center;
+	margin: 0;
+}

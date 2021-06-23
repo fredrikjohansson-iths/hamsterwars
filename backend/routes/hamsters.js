@@ -87,11 +87,11 @@ router.put(
 	"/:id",
 	async (req, res) => {
 		try {
-			const errors = validationResult(req);
+			// const errors = validationResult(req);
 
-			if (!errors.isEmpty()) {
-				return res.status(400).json({ errors: errors.array() });
-			}
+			// if (!errors.isEmpty()) {
+			// 	return res.status(400).json({ errors: errors.array() });
+			// }
 
 			const id = req.params.id;
 
@@ -100,11 +100,11 @@ router.put(
 			if (!docRef.exists) {
 				return res.status(404);
 			}
-			const docSet = await db
-				.collection("hamsters")
-				.doc(id)
-				.set(req.body, { merge: true });
-			res.status(200);
+
+			await db.collection("hamsters").doc(id).set(req.body, { merge: true });
+
+			res.status(200).send('Status 200');
+
 		} catch (err) {
 			res.status(500).send(err.message);
 		}
