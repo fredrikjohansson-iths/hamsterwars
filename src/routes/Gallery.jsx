@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import Thumbnail from "../components/gallery/Thumbnail";
-import Gallery from "react-photo-gallery";
+import Thumbnail from "../components/gallery/Thumbnail";
 import "./Gallery.css";
 
 const axios = require("axios");
@@ -11,20 +10,24 @@ class HamsterGallery extends Component {
 		this.state = {
 			hamsters: null,
 			selectedHamster: [],
-			selectedImg: null,
 			showMenu: false
 		};
+
 		this.componentDidMount = this.componentDidMount.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 		this.deleteHamster = this.deleteHamster.bind(this);
 		this.hideMenu = this.hideMenu.bind(this);
 	}
 	componentDidMount() {
-		axios
-			.get("http://localhost:8000/hamsters/")
-			.then((response) => {
-				this.setState({ hamsters: response.data });
-			});
+		axios.get("http://localhost:8000/hamsters/").then((response) => {
+			this.setState({ hamsters: response.data });
+		});
 	}
+	handleClick(hamster) {
+		this.setState({ selectedHamster: [hamster] });
+		this.setState({ showMenu: true });
+	}
+
 	hideMenu() {
 		this.setState({ showMenu: false });
 	}
@@ -41,40 +44,19 @@ class HamsterGallery extends Component {
 			return "Loading hamsters...";
 		}
 
-		const photos = [];
-		this.state.hamsters.forEach((hamster) => {
-			photos.push({
-				src: hamster.imgName,
-				width: 1,
-				height: 1,
-				id: hamster.docId,
-				className: "thumbnail"
-			});
-			setTimeout(() => {
-				document.getElementById(hamster.docId).addEventListener("click", () => {
-					var uri = `http://localhost:8000/hamsters/${hamster.docId}`;
-					axios.get(uri).then((response) => {
-						this.state.selectedHamster.push(hamster);
-						this.setState({ selectedImg: hamster.imgName });
-					});
-					this.setState({ showMenu: true });
-				});
-			}, 500);
-		});
-
 		return (
 			<div>
 				<div>
 					<form>
-						<label for="name">Name</label>
+						<label htmlFor="name">Name</label>
 						<input id="name" type="text" />
-						<label for="name">Age</label>
+						<label htmlFor="name">Age</label>
 						<input id="name" type="number" />
-						<label for="name">Favourite food</label>
+						<label htmlFor="name">Favourite food</label>
 						<input id="name" type="text" />
-						<label for="name">Loves</label>
+						<label htmlFor="name">Loves</label>
 						<input id="name" type="text" />
-						<label for="name">Upload image</label>
+						<label htmlFor="name">Upload image</label>
 						<input id="name" type="file" />
 					</form>
 				</div>
@@ -84,7 +66,20 @@ class HamsterGallery extends Component {
 							src={this.state.selectedImg ? this.state.selectedImg : ""}
 							alt="selected"
 						/>
+
 						{this.state.showMenu ? this.state.selectedHamster : ""}
+						<div>
+							{this.state.selectedHamster.map((hamster) => {
+								return (
+									<p>
+										{hamster.name}
+										{hamster.age}
+										{hamster.loves}
+										{hamster.favFood}
+									</p>
+								);
+							})}
+						</div>
 						<h1 className={`menu-text ${this.state.showMenu ? "" : "hidden"}`}>
 							Delete this hamster?
 						</h1>
@@ -92,10 +87,15 @@ class HamsterGallery extends Component {
 						<button onClick={this.hideMenu}>No</button>
 					</div>
 				</div>{" "}
-				<Gallery photos={photos} />;
-				{/* {this.state.hamsters.map((hamster) => { 
-					return <Thumbnail key={hamster.docId} hamsterData={hamster} />;
-				})} */}
+				<div className="gallery-grid">
+					{this.state.hamsters.map((hamster) => (
+						<Thumbnail
+							key={hamster.docId}
+							onClick={this.handleClick}
+							hamsterData={hamster}
+						/>
+					))}
+				</div>
 			</div>
 		);
 	}

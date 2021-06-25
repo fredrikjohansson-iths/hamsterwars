@@ -121,7 +121,7 @@ router.delete("/:id", async (req, res) => {
 		}
 
 		const docDel = await db.collection("hamsters").doc(id).delete();
-		res.status(200);
+		res.status(200).send("200 OK");
 	} catch (err) {
 		res.status(500).send(err.message);
 	}
