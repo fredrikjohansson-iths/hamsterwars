@@ -1,26 +1,133 @@
 .react-photo-gallery--gallery img {
-	object-fit: cover;
+  object-fit: cover;
 }
 
 .menu-bkg {
-	background-color: rgba(0, 0, 0, 0.7294117647058823);
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	top: 0em;
-	display: flex;
-	justify-content: center;
-	padding-top: 5em;
+  background-color: rgba(0, 0, 0, 0.7294117647058823);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0em;
+  display: flex;
+  justify-content: center;
+  padding-top: 5em;
+  z-index: 1;
 }
 
 .menu-text {
-	color: White;
+  color: White;
 }
 
 .thumbnail {
-    transition: ease-in 0.25s;
+  height: 15em;
+  width: 15em;
+  object-fit: cover;
+  margin-top: 1em;
+  position: relative;
+  z-index: 0;
+  filter: saturate(0%);
+  transition: ease-in-out 0.3s;
 }
 .thumbnail:hover {
-    transition: ease-out 0.35s;
-	scale: 1.1;
+  scale: 1.1;
+  filter: saturate(100%);
+}
+
+.thumb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  left: 6vw;
+  position: relative;
+  margin-top: 5em;
+}
+
+.col-A {
+  grid-area: 1 / 1 / 2 / 3;
+  width: min-content;
+}
+
+.col-B {
+  grid-area: 1 / 2 / 2 / 3;
+  width: min-content;
+}
+
+.col-C {
+  grid-area: 1 / 3 / 2 / 4;
+  width: min-content;
+}
+
+.col-D {
+  grid-area: 1 / 4 / 2 / 5;
+  width: min-content;
+}
+
+.about {
+  position: fixed;
+  bottom: 31.6em;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  height: 20em;
+  padding-inline: 3%;
+  padding: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.3em;
+  width: 11em;
+  font-size: 12pt;
+  list-style: none;
+}
+
+.about li {
+  margin-bottom: 1em;
+}
+.new {
+  position: relative;
+  left: 44vw;
+  width: 15em;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 19em;
+  transition: ease-in-out 0.25s;
+}
+
+.new form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  height: auto;
+  line-height: 1.5em;
+  margin-left: 3em;
+  color: white;
+  padding-top: 0.7em;
+}
+.add-text {
+  color: black;
+  margin: 0;
+  text-align: center;
+  font-size: 1.5em;
+}
+.plus {
+  color: #ccff7c;
+  margin: 0;
+  margin-right: 0.3em;
+}
+.close {
+  width: min-content;
+  position: relative;
+  left: 10em;
+  font-size: 1em;
+  color: red;
+  margin: 0;
+}
+button {
+  height: 1.5em;
+  width: 3em;
+  font-size: 2em;
+  margin-right: 2em;
+}
+
+label {
+  font-weight: bold;
 }

@@ -92,4 +92,5 @@ margin-left: -35em;
 	margin: 0;
 }
 
-.hidden {display: none !important}
+.hidden {
+	display: none !important}
