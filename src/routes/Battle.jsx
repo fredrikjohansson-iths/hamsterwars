@@ -32,7 +32,7 @@ class Battle extends Component {
 
 	componentDidMount() {
 		var floor = 0;
-		axios.get("http://localhost:8000/hamsters/").then((response) => {
+		axios.get("https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/").then((response) => {
 			// handle success
 
 			floor = response.data.length - 1;
@@ -56,8 +56,8 @@ class Battle extends Component {
 				});
 			}
 			if (this.state.blueId && this.state.redId) {
-				const blueURI = `http://localhost:8000/hamsters/${this.state.blueId}`;
-				const redURI = `http://localhost:8000/hamsters/${this.state.redId}`;
+				const blueURI = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.blueId}`;
+				const redURI = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.redId}`;
 				axios.get(blueURI).then((response) => {
 					this.setState({ blueContestant: response.data });
 				});
@@ -69,8 +69,8 @@ class Battle extends Component {
 	}
 
 	getResults() {
-		const blueURI = `http://localhost:8000/hamsters/${this.state.blueId}`;
-		const redURI = `http://localhost:8000/hamsters/${this.state.redId}`;
+		const blueURI = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.blueId}`;
+		const redURI = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.redId}`;
 
 		this.setState({ showResults: true });
 		setTimeout(function(){ window.location.reload(); }, 10000);
@@ -125,8 +125,8 @@ class Battle extends Component {
 			blueBody.games++;
 		}
 
-		const blueURI = `http://localhost:8000/hamsters/${this.state.blueId}`;
-		const redURI = `http://localhost:8000/hamsters/${this.state.redId}`;
+		const blueURI = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.blueId}`;
+		const redURI = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.redId}`;
 
 		axios
 			.put(blueURI, blueBody)

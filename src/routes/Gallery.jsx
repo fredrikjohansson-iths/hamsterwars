@@ -29,7 +29,7 @@ class HamsterGallery extends Component {
     this.hideMenu = this.hideMenu.bind(this);
   }
   componentDidMount() {
-    axios.get("http://localhost:8000/hamsters/").then((response) => {
+    axios.get("https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/").then((response) => {
       this.setState({ hamsters: response.data });
     });
   }
@@ -68,13 +68,13 @@ class HamsterGallery extends Component {
   createHamster(event) {
     event.preventDefault();
     var hamster = this.state.newHamster;
-    var uri = `http://localhost:8000/hamsters/`;
+    var uri = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/`;
     axios.post(uri, hamster).then((response) => {
       this.setState({ showAddNew: false });
     });
   }
   deleteHamster() {
-    var uri = `http://localhost:8000/hamsters/${this.state.selectedHamster[0].docId}`;
+    var uri = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.selectedHamster[0].docId}`;
     axios.delete(uri).then((response) => {
       console.log(response);
     });
