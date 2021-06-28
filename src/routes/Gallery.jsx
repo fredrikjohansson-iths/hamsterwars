@@ -51,15 +51,19 @@ class HamsterGallery extends Component {
     this.setState({ showMenu: true });
   }
 
+  handleError(e) {
+    e.target.src = "na.jpg";
+  }
+
   hideMenu() {
     this.setState({ showMenu: false });
   }
   toggleAddNew() {
     if (this.state.showAddNew) {
       this.setState({ showAddNew: false });
+    } else {
+      this.setState({ showAddNew: true });
     }
-	else{
-    this.setState({ showAddNew: true }); }
   }
   createHamster(event) {
     event.preventDefault();
@@ -87,7 +91,7 @@ class HamsterGallery extends Component {
         <div className={` ${this.state.showAddNew ? "hidden" : ""} `}>
           <p onClick={this.toggleAddNew} className="add-text">
             {" "}
-            <i  className={`plus fas fa-plus`} />
+            <i className={`plus fas fa-plus`} />
             Add new hamster
           </p>
         </div>
@@ -135,6 +139,7 @@ class HamsterGallery extends Component {
         <div className={`menu-bkg ${this.state.showMenu ? "" : "hidden"}`}>
           <div>
             <img
+            onError={this.handleError}
               src={
                 this.state.selectedHamster
                   ? this.state.selectedHamster.imgName
@@ -143,26 +148,36 @@ class HamsterGallery extends Component {
               alt="selected"
             />
             {this.state.showMenu && this.state.selectedHamster ? (
-              <ul className="about">
-                <label htmlFor="selectedName">Name</label>
-                <li id="selectedName">{this.state.selectedHamster.name}</li>
-                <label htmlFor="selectedAge">Age</label>
-                <li id="selectedAge">{this.state.selectedHamster.age}</li>
-                <label htmlFor="selectedFav">Favourite food</label>
-                <li id="selectedFav">{this.state.selectedHamster.favFood}</li>
-                <label htmlFor="selectedLoves">Loves</label>
-                <li id="selectedLoves">{this.state.selectedHamster.loves}</li>
-                <label htmlFor="selectedImg">Image source</label>
-                <li id="selectedImg">{this.state.selectedHamster.imgName}</li>
-              </ul>
+              <div className="flex-container">
+                <div>
+                <ul className="about">
+                  <label htmlFor="selectedName">Name</label>
+                  <li id="selectedName">{this.state.selectedHamster.name}</li>
+                  <label htmlFor="selectedAge">Age</label>
+                  <li id="selectedAge">{this.state.selectedHamster.age}</li>
+                  <label htmlFor="selectedFav">Favourite food</label>
+                  <li id="selectedFav">{this.state.selectedHamster.favFood}</li>
+                  <label htmlFor="selectedLoves">Loves</label>
+                  <li id="selectedLoves">{this.state.selectedHamster.loves}</li>
+                  <label htmlFor="selectedImg">Image source</label>
+                  <li id="selectedImg">{this.state.selectedHamster.imgName}</li>
+                </ul></div>
+                <div>
+                  {" "}
+                  <h1
+                    className={`menu-text ${
+                      this.state.showMenu ? "" : "hidden"
+                    }`}
+                  >
+                    Delete this hamster?
+                  </h1>
+                  <button onClick={this.deleteHamster}>Yes</button>
+                  <button onClick={this.hideMenu}>No</button>
+                </div>
+              </div>
             ) : (
               ""
             )}{" "}
-            <h1 className={`menu-text ${this.state.showMenu ? "" : "hidden"}`}>
-              Delete this hamster?
-            </h1>
-            <button onClick={this.deleteHamster}>Yes</button>
-            <button onClick={this.hideMenu}>No</button>
           </div>
         </div>{" "}
         <div className="thumb-grid">

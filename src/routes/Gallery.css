@@ -14,8 +14,20 @@
   z-index: 1;
 }
 
+.menu-bkg img {
+  display: block;
+  max-width: 55em;
+  max-height: 35em;
+}
+
 .menu-text {
   color: White;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .thumbnail {
@@ -70,9 +82,7 @@
   height: 20em;
   padding-inline: 3%;
   padding: 0%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: contents;
   line-height: 1.3em;
   width: 11em;
   font-size: 12pt;
