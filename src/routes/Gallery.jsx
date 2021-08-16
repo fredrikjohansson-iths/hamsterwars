@@ -29,7 +29,7 @@ class HamsterGallery extends Component {
     this.hideMenu = this.hideMenu.bind(this);
   }
   componentDidMount() {
-    axios.get("https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/").then((response) => {
+    axios.get("/hamsters").then((response) => {
       this.setState({ hamsters: response.data });
     });
   }
@@ -52,7 +52,7 @@ class HamsterGallery extends Component {
   }
 
   handleError(e) {
-    e.target.src = "na.jpg";
+    e.target.src = "img/na.jpg";
   }
 
   hideMenu() {
@@ -68,13 +68,13 @@ class HamsterGallery extends Component {
   createHamster(event) {
     event.preventDefault();
     var hamster = this.state.newHamster;
-    var uri = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/`;
+    var uri = `/hamsters/`;
     axios.post(uri, hamster).then((response) => {
       this.setState({ showAddNew: false });
     });
   }
   deleteHamster() {
-    var uri = `https://hamsterwars-stigfj.herokuapp.com:8000/hamsters/${this.state.selectedHamster[0].docId}`;
+    var uri = `/hamsters/${this.state.selectedHamster.docId}`;
     axios.delete(uri).then((response) => {
       console.log(response);
     });
@@ -142,7 +142,7 @@ class HamsterGallery extends Component {
             onError={this.handleError}
               src={
                 this.state.selectedHamster
-                  ? this.state.selectedHamster.imgName
+                  ? `img/${this.state.selectedHamster.imgName}`
                   : ""
               }
               alt="selected"
@@ -171,8 +171,8 @@ class HamsterGallery extends Component {
                   >
                     Delete this hamster?
                   </h1>
-                  <button onClick={this.deleteHamster}>Yes</button>
-                  <button onClick={this.hideMenu}>No</button>
+                  <button className="gallery-button" onClick={this.deleteHamster}>Yes</button>
+                  <button className="gallery-button" onClick={this.hideMenu}>No</button>
                 </div>
               </div>
             ) : (

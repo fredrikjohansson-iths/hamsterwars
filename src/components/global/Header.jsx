@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Header.css";
-import logo from "./logo.svg";
 
 // eslint-disable-next-line
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -9,25 +8,25 @@ class Header extends Component {
     return (
       <div className="Header">
         <Link className="logo-link" to="/">
-          <img src={logo} className="Logo" alt="Logo" />
+          <img src="/img/logo.svg" className="Logo" alt="Logo" />
         </Link>
         <nav>
           <ul className="nav-list">
             <li>
               <Link to="/">
-                <img src="cage.svg" alt="home" />
+                <img src="/img/cage.svg" alt="home" />
                 <p>Home</p>
               </Link>
             </li>
             <li>
               <Link to="/battle">
-                <img src="swords.svg" alt="home" />
+                <img src="/img/swords.svg" alt="home" />
                 <p>Battle</p>
               </Link>
             </li>
             <li>
               <Link to="/gallery">
-                <img src="gallery.svg" alt="home" />
+                <img src="/img/gallery.svg" alt="home" />
                 <p className="gallery">Gallery</p>
               </Link>
             </li>

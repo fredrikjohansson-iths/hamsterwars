@@ -4,16 +4,21 @@ import "./Contestant.css";
 
 class Contestant extends Component {
 
+
+
   capitalizeFirstLetter(string) {
+    if (string === undefined)
+    {string = ''}
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
   render() {
 
     return (
       <div className={`grid-container-profile ${this.props.grid}`}>
         <div>
           <img
-            src={`${this.props.imgSrc}`}
+            src={`img/${this.props.imgSrc}`}
             className={` avatar ${this.props.grid}-img `}
             alt="avatar"
           />
