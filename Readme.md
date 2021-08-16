@@ -1,3 +1,7 @@
-# Hamster Wars - Front End
+# Hamster Wars
 
-## Jag har enbart arbetat mot kraven för godkänt. P.g.a. tidsbrist saknas möjlighet till att lägga till nya hamstrar samt styling av flertal element.
+### Detta projekt omfattar en full-stack lösning som huvudsakligen utgörs av ReactJS & ExpressJS, applikationen hostas med hjälp av den molnbaserade plattformen Heroku och Firebase används för hosta tillhörande databas.   
+
+### Hamsters Wars går ut på att rösta på den hamster som tilltalar en mest, i varje omgång ställs två hamstrar emot varandra och det är upp till användaren att bestämma vilken av dom två som lämnar matchen som segrare.
+
+### Utöver tävlingsmomentet så finns även CRUD-funktionalitet tillgängligt.
