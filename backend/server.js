@@ -5,7 +5,7 @@ const getDb = require("./fbauth.js");
 
 const hamsters = require("./routes/hamsters.js");
 
-const buildDir = path.join(__dirname, "../build");
+const buildDir = path.join(__dirname, "../public");
 // const imgDir = path.join(__dirname, "./img");
 
 const app = express();
@@ -26,7 +26,7 @@ app.use('/img', express.static(path.join(__dirname, './img')))
 app.use("/hamsters", hamsters);
 
 app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "../build/index.html"));
+	res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
 app.listen(PORT, () => {
