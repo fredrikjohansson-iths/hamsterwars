@@ -23,7 +23,6 @@ router.get("/", async (req, res) => {
 
 router.get("/random", async (req, res) => {
 	try {
-
 		const snapshot = await db.collection("hamsters").get();
 
 		let docData = [];
@@ -41,25 +40,25 @@ router.get("/random", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-	try {
+	const id = req.params.id;
 
+	var docRef = await db.collection("hamsters").doc(id);
 
-		const id = req.params.id;
-
-		const docRef = await db.collection("hamsters").doc(id).get();
-
-
-		if (!docRef.exists) {
-			return res.status(404);
-		}
-
-
-		res.status(200).send({ docId: docRef.id, ...docRef.data() })
-
-
-	} catch (err) {
-		res.status(500).send(err.message);
-	}
+	docRef
+		.get()
+		.then((doc) => {
+			if (doc.exists) {
+				console.log("Document data:", doc.data());
+				res.status(200).send(doc.data());
+			} else {
+				// doc.data() will be undefined in this case
+				console.log("No such document!");
+				return res.status(404).send("404 Not Found");
+			}
+		})
+		.catch((error) => {
+			console.log("Error getting document:", error);
+		});
 });
 
 router.post(
@@ -83,48 +82,50 @@ router.post(
 	}
 );
 
-router.put(
-	"/:id",
-	async (req, res) => {
-		try {
-			// const errors = validationResult(req);
+router.put("/:id", async (req, res) => {
+	const id = req.params.id;
 
-			// if (!errors.isEmpty()) {
-			// 	return res.status(400).json({ errors: errors.array() });
-			// }
+	var docRef = await db.collection("hamsters").doc(id);
 
-			const id = req.params.id;
-
-			const docRef = await db.collection("hamsters").doc(id).get();
-
-			if (!docRef.exists) {
-				return res.status(404);
+	docRef
+		.get()
+		.then((doc) => {
+			if (doc.exists) {
+				if (Object.keys(req.body).length <= 0) {
+					return res.status(400).send("400 Bad Request");
+				}
+				docRef.set(req.body, { merge: true });
+				res.status(200).send("200 OK");
+			} else {
+				console.log("No such document!");
+				return res.status(404).send("404");
 			}
-
-			await db.collection("hamsters").doc(id).set(req.body, { merge: true });
-
-			res.status(200).send('Status 200');
-
-		} catch (err) {
-			res.status(500).send(err.message);
-		}
-	}
-);
+		})
+		.catch((error) => {
+			console.log("Error getting document:", error);
+		});
+});
 
 router.delete("/:id", async (req, res) => {
-	try {
-		const id = req.params.id;
-		const docRef = await db.collection("hamsters").doc(id).get();
+	const id = req.params.id;
 
-		if (!docRef.exists) {
-			res.status(404);
-		}
+	var docRef = await db.collection("hamsters").doc(id);
 
-		const docDel = await db.collection("hamsters").doc(id).delete();
-		res.status(200).send("200 OK");
-	} catch (err) {
-		res.status(500).send(err.message);
-	}
+	docRef
+		.get()
+		.then((doc) => {
+			if (doc.exists) {
+				docRef.delete();
+				res.status(200).send(doc.data());
+			} else {
+				// doc.data() will be undefined in this case
+				console.log("No such document!");
+				return res.status(404).send("404 Not Found");
+			}
+		})
+		.catch((error) => {
+			console.log("Error getting document:", error);
+		});
 });
 
 module.exports = router;
